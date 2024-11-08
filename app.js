@@ -22,11 +22,23 @@ const abi = [
 
 // Initialize Web3
 function initializeWeb3() {
+    // Alert users when the app loads
+    window.alert(
+        "⚠️ Please Note: This DApp may take a moment to fully load.\n\n" +
+        "🔗 Welcome to the Patriotic Voting DApp! 🇺🇸\n\n" +
+        "📌 This DApp allows you to securely cast your vote for your favorite candidate on the blockchain.\n\n" +
+        "🛠️ To get started:\n" +
+        "1️⃣ Connect your MetaMask wallet by clicking the 'Connect Wallet' button.\n" +
+        "2️⃣ Ensure the smart contract is deployed on the blockchain. Without deployment, voting will not work.\n" +
+        "3️⃣ Select your preferred candidate and click 'Vote Now' to cast your vote.\n\n" +
+        "⚠️ Note: Once you cast your vote, it is permanent and cannot be changed."
+    );
+
     if (typeof window.ethereum !== 'undefined') {
         web3 = new Web3(window.ethereum);
         console.log("Web3 initialized");
     } else {
-        alert("MetaMask is not installed. Please install it to use this DApp.");
+        alert("❌ MetaMask is not installed. Please install it to use this DApp.");
     }
 }
 
@@ -50,6 +62,7 @@ async function connectWallet() {
         }
     }
 }
+
 
 // Function to disconnect the wallet
 function disconnectWallet() {
@@ -84,6 +97,7 @@ async function vote() {
         messageDiv.textContent = `❌ ${error.message}`;
     }
 }
+
 
 window.initializeWeb3 = initializeWeb3;
 window.connectWallet = connectWallet;

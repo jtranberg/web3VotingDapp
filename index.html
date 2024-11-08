@@ -65,6 +65,25 @@
     <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
     <script src="./app.js"></script>
     <script>
+        // Alert to guide users when they first visit the DApp
+        window.onload = function() {
+            window.alert(
+                "🇺🇸 Welcome to the Patriotic Voting DApp! 🇺🇸\n\n" +
+                "📌 This decentralized application allows you to cast your vote securely and transparently on the blockchain. Here’s what you need to know:\n\n" +
+                "🛠️ To get started:\n" +
+                "1️⃣ Connect your MetaMask wallet by clicking the 'Connect Wallet' button.\n" +
+                "2️⃣ Ensure you have deployed the smart contracts to the blockchain before voting.\n" +
+                "3️⃣ Select your preferred candidate from the dropdown menu.\n" +
+                "4️⃣ Click 'Vote Now' to cast your vote securely on the blockchain.\n\n" +
+                "⚠️ Note: Your vote is anonymous and immutable. Once submitted, it cannot be changed.\n\n" +
+                "🚀 Let’s make your vote count for freedom and justice!"
+            );
+    
+            initializeWeb3();
+        };
+    </script>
+    
+    <script>
         window.onload = initializeWeb3;
     </script>
 </body>
