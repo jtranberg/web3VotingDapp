@@ -3,50 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voting App</title>
+    <title>Patriotic Voting DApp</title>
     <style>
-
-        h1{
-            color: #fff;
-        }
-        label{
-            color: blue;
-        }
-        body
-        {
+        body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-
-        background: #67b6eb;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #003366, #67b6eb);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
         }
-        #candidate
-        {
-            color: #a00c0c;
+        h1 { font-size: 3rem; margin-bottom: 20px; }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
         }
-        button
-        {
-            background: #a00c0c;
+        #connectButton { background-color: #007bff; color: white; }
+        #disconnectButton { background-color: #dc3545; color: white; display: none; }
+        #voteButton { background-color: #a00c0c; color: white; }
+        button:hover { opacity: 0.9; }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #a00c0c;
+            background-color: white;
+            color: #003366;
         }
-        button:hover
-        {
-            background: #289452;
-        }
-       
-        
+        .message { margin-top: 20px; font-size: 1.2rem; }
+        #walletAddress { margin-top: 10px; }
     </style>
 </head>
 <body>
-    <h1>Voting App</h1><br>
-    <label class="label" for="candidate">Select a candidate:</label>
-    <select id="candidate" name="candidate">
-        <option value="candidate1">Candidate 1</option>
-        <option value="candidate2">Candidate 2</option>
-        <!-- Add more candidates as needed -->
-    </select>
-    <button onclick="vote()">Vote</button>
+    <h1>🇺🇸 Voting DApp 🇺🇸</h1>
 
-    <script src="https://web3js.readthedocs.io/web3.js"></script>
+    <!-- Wallet Connection Section -->
+    <button id="connectButton" onclick="connectWallet()">Connect Wallet</button>
+    <button id="disconnectButton" onclick="disconnectWallet()">Disconnect Wallet</button>
+    <div id="walletAddress"></div>
+
+    <!-- Voting Section (always visible) -->
+    <div id="votingSection">
+        <label for="candidate">Select your candidate:</label>
+        <select id="candidate">
+            <option value="candidate1">Candidate 1 - Liberty Lee</option>
+            <option value="candidate2">Candidate 2 - Freedom Fox</option>
+            <option value="candidate3">Candidate 3 - Justice Johnson</option>
+        </select>
+        <button id="voteButton" onclick="vote()">🗳️ Vote Now</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
     <script src="./app.js"></script>
+    <script>
+        window.onload = initializeWeb3;
+    </script>
 </body>
 </html>
